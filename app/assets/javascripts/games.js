@@ -8,3 +8,23 @@ function newGame(){
     return response;
   })
 }
+
+function createTiles(){
+  var tiles = [];
+  var colors = [
+    "red", "blue", "green", "yellow"
+  ];
+  var y = 0;
+  for(var i = 0; i < 25; i++){
+    if(i != 0 && i % 5 == 0){
+      y++;
+    }
+    if(tiles[y] === undefined){
+      tiles[y] = [];
+    }
+    tiles[y].push(colors[parseInt(Math.random() * colors.length)]);
+  }
+  return tiles;
+}
+
+var tiles = createTiles();
