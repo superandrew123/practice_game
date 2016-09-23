@@ -35,3 +35,13 @@ body {
     margin: auto
   }
 }
+.tile {
+    height: 96px;
+    width: 116px;
+    display: inline-block;
+    margin-bottom: -4px;
+    border: 1px solid white;
+}
+.tile:hover {
+    border: 2px solid black;
+}
