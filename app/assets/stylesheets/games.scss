@@ -1,11 +1,14 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+* {
+    box-sizing: border-box;
+}
 body {
   background-color: #d7d7d7;
   height: 100%;
   width: 100%;
+  font-family: 'Arial';
 }
 #app-main {
   width: 600px;
@@ -16,4 +19,19 @@ body {
   color: white;
   margin: 20px auto;
   border-radius: 2px;
+  padding: 10px;
+  position: relative;
+  
+  button {
+    width: 200px;
+    height: 60px;
+    display: block;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto
+  }
 }

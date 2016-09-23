@@ -1,9 +1,6 @@
 
 var Game = React.createClass({
-
   render: function() {
-    return (<div>
-        Testing
-      </div>);
+    return (<NewGame>New Game</NewGame>);
   }
 });
