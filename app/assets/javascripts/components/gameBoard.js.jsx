@@ -7,6 +7,14 @@ var GameBoard = React.createClass({
   
   render: function(){
     // 5x5 board to start
+    $.ajax('/turn', {
+      method: 'POST',
+      data: {
+        game: {
+          board: JSON.stringify(tiles)
+        }
+      }
+    });
     return(<div id="gameBoard">
         {
           tiles.map(function(row, i){
