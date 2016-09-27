@@ -1,64 +1,77 @@
 
 var Tile = React.createClass({
-  changeColor: function (event){
-    // adjust the values across the tiles array
-    var tileValues = this.props.tileNumber.split('-');
-    var row = parseInt(tileValues[0]);
-    var col = parseInt(tileValues[1]);
-
+  changeColor: function (row, col){
     // top
-    if(tiles[row - 1] !== undefined){
+    if(tiles[row - 1] !== undefined && !tiles[row - 1][col].dead){
       // Grab the color above the tile above and replace the tile above's color with that color
       if(tiles[row - 2] !== undefined){
-        tiles[row - 1][col] = tiles[row - 2][col];
+        tiles[row - 1][col].color = tiles[row - 2][col].color;
 
       } else {
         // grab bottom row
-        tiles[row - 1][col] = tiles[tiles.length - 1][col];
+        tiles[row - 1][col].color = tiles[tiles.length - 1][col].color;
       }
     }
     // bottom
-    if(tiles[row + 1] !== undefined){
+    if(tiles[row + 1] !== undefined && !tiles[row + 1][col].dead){
       // Grab the color below the tile below and replace the tile below's color with that color
       if(tiles[row + 2] !== undefined){
-        tiles[row + 1][col] = tiles[row + 2][col];
+        tiles[row + 1][col].color = tiles[row + 2][col].color;
 
       } else {
         // grab top row
-        tiles[row + 1][col] = tiles[0][col];
+        tiles[row + 1][col].color = tiles[0][col].color;
       }
     }
     // left
-    if(tiles[row][col - 1] !== undefined){
+    if(tiles[row][col - 1] !== undefined && !tiles[row][col - 1].dead){
       // Grab the color left of the tile left of this and replace the tile left's color with that color
       if(tiles[row][col - 2] !== undefined){
-        tiles[row][col - 1] = tiles[row][col - 2];
+        tiles[row][col - 1].color = tiles[row][col - 2].color;
 
       } else {
         // grab far right row
-        tiles[row][col - 1] = tiles[row][tiles[0].length - 1];
+        tiles[row][col - 1].color = tiles[row][tiles[0].length - 1].color;
       }
     }
     // right
-    if(tiles[row][col + 1] !== undefined){
+    if(tiles[row][col + 1] !== undefined && !tiles[row][col + 1].dead){
       // Grab the color right of the tile right of this and replace the tile right's color with that color
       if(tiles[row][col + 2] !== undefined){
-        tiles[row][col + 1] = tiles[row][col + 2];
+        tiles[row][col + 1].color = tiles[row][col + 2].color;
 
       } else {
         // grab far left row
-        tiles[row][col + 1] = tiles[row][0];
+        tiles[row][col + 1].color = tiles[row][0].color;
       }
     }
 
     ReactDOM.render(<GameBoard />, document.getElementById('app-main'));
   },
   handleClick: function(event){
-    this.changeColor(event);
+    // adjust the values across the tiles array
+    var tileValues = this.props.tileNumber.split('-');
+    var row = parseInt(tileValues[0]);
+    var col = parseInt(tileValues[1]);
+    tiles[row][col].clicks += 1;
+
+    if(!tiles[row][col].dead){
+      this.changeColor(row, col);
+    }
+    if(tiles[row][col].clicks >= 1){
+      tiles[row][col].dead = true;
+    }
   },
   render: function(){
-    var tileStyle = {
-      'backgroundColor': this.props.color
+    if(this.props.dead){
+      var tileStyle = {
+        'backgroundColor': this.props.color,
+        'opacity': 0.5
+      }
+    } else {
+      var tileStyle = {
+        'backgroundColor': this.props.color
+      }
     }
     return (<div 
           id={'tile' + this.props.tileNumber}

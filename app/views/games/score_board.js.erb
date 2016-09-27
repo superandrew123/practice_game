@@ -1,0 +1,7 @@
+document.getElementById('score-board').style.display = "block";
+
+display_game_status(<%= @score.to_json.html_safe %>);
+
+<% if @conditions[:won] || @conditions[:board_locked] %>
+  game_over(<%= @score.to_json.html_safe %>, <%= @conditions.to_json.html_safe %>);
+<% end %>

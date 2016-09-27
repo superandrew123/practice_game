@@ -1,9 +1,11 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$width: 600px;
 * {
   box-sizing: border-box;
 }
+
 body {
   background-color: #d7d7d7;
   height: 100%;
@@ -11,7 +13,7 @@ body {
   font-family: 'Arial';
 }
 #app-main {
-  width: 600px;
+  width: $width;
   height: 500px;
   background-color: black;
   border: #666;
@@ -45,12 +47,24 @@ body {
 .tile:hover {
   border: 2px solid black;
 }
-h1 {
-  font-style: italic;
-  text-align: center;
-  width: 100%;
-  top: 50%;
-  line-height: 0;
-  margin: 0;
-  position: absolute;
+#score-board {
+  width: $width;
+  margin: 10px auto;
+  background: white;
+  box-shadow: 0 5px 10px 0px #666;
+  padding: 20px;
+  font-size: 24px;
+  display: none;
+
+  div {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+  }
+  #final {
+    width: 100%;
+    font-style: italic;
+    display: none;
+    margin-bottom: 10px;
+  }
 }

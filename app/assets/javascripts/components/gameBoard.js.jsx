@@ -18,8 +18,8 @@ var GameBoard = React.createClass({
     return(<div id="gameBoard">
         {
           tiles.map(function(row, i){
-            return row.map(function(color, e){
-              return <Tile color={color} key={i + "-" + e} tileNumber={i + "-" + e} />;
+            return row.map(function(tile, e){
+              return <Tile color={tile.color} dead={tile.dead} key={i + "-" + e} tileNumber={i + "-" + e} />;
             })
           })
         }

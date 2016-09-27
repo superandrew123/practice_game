@@ -1,7 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
   def index 
-    
   end
   def new
     @game = Game.new
@@ -9,13 +8,11 @@ class GamesController < ApplicationController
 
   def turn
     turn = JSON.parse(turn_params[:board])
-    won = Game.win?(turn)
-
-    if won
-      render :win, layout: false
-    else 
-      render :nothing => true
-    end
+    
+    @conditions = Game.win?(turn)
+    @score = Game.get_score(turn)
+    
+    render :score_board, layout: false
   end
 
   private
