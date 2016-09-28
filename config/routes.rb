@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :games
   devise_for :users
-  root 'application#index'
+  root 'games#new'
   post 'turn' => 'games#turn'
 
   # The priority is based upon order of creation: first created -> highest priority.

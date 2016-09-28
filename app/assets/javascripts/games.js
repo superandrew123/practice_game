@@ -33,11 +33,13 @@ function createTiles(){
 }
 
 var tiles = createTiles();
-
+var gameId = 0;
 function display_game_status(status){
   document.getElementById('score').innerHTML = "Score: " + status.points;
-  document.getElementById('tile-color').innerHTML = status.scores[0][0];
-  document.getElementById('tile-count').innerHTML = status.scores[0][1];
+  var score_text = status.scores.map(function(score_data){
+    return score_data[0].toUpperCase() + ": " + score_data[1];
+  });
+  document.getElementById('tile-scores').innerHTML = score_text.join("<br>");
 }
 
 function game_over(status, conditions){

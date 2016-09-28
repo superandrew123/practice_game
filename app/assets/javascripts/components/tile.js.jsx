@@ -45,8 +45,7 @@ var Tile = React.createClass({
         tiles[row][col + 1].color = tiles[row][0].color;
       }
     }
-
-    ReactDOM.render(<GameBoard />, document.getElementById('app-main'));
+    ReactDOM.render(<GameBoard gameId={this.props.gameId} />, document.getElementById('app-main'));
   },
   handleClick: function(event){
     // adjust the values across the tiles array

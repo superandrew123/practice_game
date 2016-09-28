@@ -1,11 +1,12 @@
 class Game < ActiveRecord::Base
-  def self.win?(turn)
+  attr_accessor :current_board
+  def win?
     # Check to see if the board is complete 
     won = true
     board_locked = true
-    win_color = turn[0][0]
+    win_color = self.current_board[0][0]
 
-    turn.each { |row|
+    self.current_board.each { |row|
       row.each { |col|
         won = false if(col['color'] != win_color)
         board_locked = false if(!col['dead'])
@@ -16,10 +17,10 @@ class Game < ActiveRecord::Base
       board_locked: board_locked
     }
   end
-  def self.get_score(turn)
+  def get_score
     # Return a hash with score per color and final score
     results = Hash.new
-    turn.each do |row|
+    self.current_board.each do |row|
       row.each do |tile|
         if(results[tile['color']] == nil)
           results[tile['color']] = 0
@@ -27,10 +28,14 @@ class Game < ActiveRecord::Base
         results[tile['color']] += 1
       end
     end
-    score = results.sort_by {|color, count| - count}
+    all_points = results.sort_by {|color, count| - count}
 
-    results['points'] = score[0][1] - score[1][1]
-    results['scores'] = score
+    # Score is the count of your best color - the count of your second best color
+    points = all_points[0][1] - all_points[1][1]
+    self.score = points
+    
+    results['points'] = points
+    results['scores'] = all_points
     return results
   end
 end

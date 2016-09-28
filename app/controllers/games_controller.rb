@@ -1,17 +1,20 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy]
-  def index 
-  end
   def new
     @game = Game.new
+    if(@game.save)
+      render "./index.html.erb"
+    else 
+      self.new
+    end
   end
 
   def turn
-    turn = JSON.parse(turn_params[:board])
-    
-    @conditions = Game.win?(turn)
-    @score = Game.get_score(turn)
-    
+    id = turn_params[:gameId].to_i
+    @game = Game.find(id)
+    @game.current_board = JSON.parse(turn_params[:board])
+    @conditions = @game.win?
+    @score = @game.get_score
+    @game.save
     render :score_board, layout: false
   end
 
@@ -21,6 +24,6 @@ class GamesController < ApplicationController
       params.fetch(:game, {})
     end
     def turn_params
-      params.require(:game).permit(:board)
+      params.require(:game).permit!
     end
 end

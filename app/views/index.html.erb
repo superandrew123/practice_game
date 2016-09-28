@@ -1,5 +1,5 @@
 <div id="app-main">
-  <%= react_component('NewGame') %>
+  <%= react_component('NewGame', game: @game.id) %>
 </div>
 <div id="score-board">
   <div id="final">
@@ -7,9 +7,6 @@
   <div id="score">
     <span>Score: 5</span>
   </div><!--
-  --><div id="dominate-tiles">
-    <span>Tile:</span> 
-    <span id="tile-color">Blue</span>
-    <span id="tile-count">5</span>
+  --><div id="tile-scores">
   </div>
 </div>

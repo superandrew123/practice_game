@@ -61,6 +61,7 @@ body {
     width: 50%;
     display: inline-block;
     text-align: center;
+    vertical-align: middle;
   }
   #final {
     width: 100%;
@@ -68,6 +69,9 @@ body {
     display: none;
     margin-bottom: 10px;
   }
+}
+#tile-scores {
+  font-size: 16px;
 }
 .green {
   background-color: #00b300;
