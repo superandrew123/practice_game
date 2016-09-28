@@ -63,7 +63,7 @@ var Tile = React.createClass({
   },
   render: function(){
     if(this.props.dead){
-      var colorStatus = this.props.color + '-disabled';
+      var colorStatus = this.props.color + ' disabled';
     } else {
       var colorStatus = this.props.color;
     }

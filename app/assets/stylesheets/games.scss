@@ -1,29 +1,29 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$width: 600px;
+$width: 590px;
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: #d7d7d7;
+  background-color: black;
   height: 100%;
   width: 100%;
   font-family: 'Arial';
 }
 #app-main {
-  width: $width;
-  height: 500px;
-  background-color: black;
-  border: #666;
-  box-shadow: 0 5px 10px 0px #666;
-  color: white;
-  margin: 20px auto;
-  border-radius: 2px;
-  padding: 10px;
-  position: relative;
+    width: $width;
+    height: 476px;
+    background-color: #999;
+    border: #666;
+    /* box-shadow: 0 5px 10px 0px #666; */
+    color: white;
+    margin: 20px auto;
+    border-radius: 2px;
+    padding: 0px 5px;
+    position: relative;
   
   button {
     width: 200px;
@@ -37,17 +37,12 @@ body {
     right: 0;
     margin: auto
   }
+  #gameBoard {
+    position: absolute;
+    top: -6px;
+  }
 }
-.tile {
-  height: 96px;
-  width: 116px;
-  display: inline-block;
-  margin-bottom: -4px;
-  border: 1px solid white;
-}
-.tile:hover {
-  border: 2px solid black;
-}
+
 #score-board {
   width: $width;
   margin: 10px auto;
@@ -73,28 +68,87 @@ body {
 #tile-scores {
   font-size: 16px;
 }
+.tile {
+  height: 86px;
+  width: 112px;
+  display: inline-block;
+  margin: 2px 2px;
+  box-shadow: 0px 10px 0px 0px #666;
+}
 .green {
-  background-color: #00b300;
+  background-color: #00FF00;
+  box-shadow: 0px 10px 0px 0px #666, inset 0px 0px 10px 2px rgba(255, 255, 255, 0.3);
+  // animation: pulse-green 2s linear infinite;
+  // animation-delay: 0s;
+}
+@keyframes pulse-green {  
+  50% { 
+    background-color: #B6FF00; 
+  }
 }
 .blue {
-  background-color: #0029cc;
+  background-color: #1a48ff;
+  box-shadow: 0px 10px 0px 0px #666;
+  // animation: pulse-blue 5s linear infinite;
+  // animation-delay: 2s;
+}
+@keyframes pulse-blue {  
+  95% {
+    background-color: #1a48ff;
+  }
+  98% { 
+    background-color: #0276FD; 
+  }
 }
 .yellow {
-  background-color: #e6e600;
+  background-color: #FFFF00;
+  box-shadow: 0px 10px 0px 0px #666, inset 0px 0px 10px 3px rgba(255, 255, 255, 0.9);
+  // animation: pulse-yellow 2s linear infinite;
+  // animation-delay: 1.5s;
+}
+@keyframes pulse-yellow {  
+  50% { 
+    background-color: #F3F315; 
+  }
 }
 .red {
-  background-color: #cc0000;
-}
-.green-disabled {
-  background-color: #00FF00;
-}
-.blue-disabled {
-  background-color: #1a48ff;
-}
-.yellow-disabled {
-  background-color: #FFFF00;
-}
-.red-disabled {
   background-color: #FF0000;
+  box-shadow: 0px 10px 0px 0px #666, inset 0px 0px 10px 2px rgba(255, 255, 255, 0.3);
+  // animation: pulse-red 2s linear infinite;
+  // animation-delay: 0.5s;
 }
+@keyframes pulse-red {  
+  50% { 
+    background-color: #DD0048; 
+  }
+}
+.green.disabled {
+  background-color: #00b300;
+  box-shadow: 0px 10px 0px 0px #00b300;
+  animation: none;
+}
+.blue.disabled {
+  background-color: #0029cc;
+  box-shadow: 0px 10px 0px 0px #0029cc;
+  animation: none;
+}
+.yellow.disabled {
+  background-color: #e6e600;
+  box-shadow: 0px 10px 0px 0px #e6e600;
+  animation: none;
+}
+.red.disabled {
+  background-color: #cc0000;
+  box-shadow: 0px 10px 0px 0px #cc0000;
+  animation: none;
+}
+.tile.disabled {
+  transition: linear .1s;
+  cursor: not-allowed;
+  height: 76px;
+  margin-top: 12px;
+}
+
+
+
 
