@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $width: 600px;
+
 * {
   box-sizing: border-box;
 }
@@ -68,3 +69,28 @@ body {
     margin-bottom: 10px;
   }
 }
+.green {
+  background-color: #00b300;
+}
+.blue {
+  background-color: #0029cc;
+}
+.yellow {
+  background-color: #e6e600;
+}
+.red {
+  background-color: #cc0000;
+}
+.green-disabled {
+  background-color: #00FF00;
+}
+.blue-disabled {
+  background-color: #1a48ff;
+}
+.yellow-disabled {
+  background-color: #FFFF00;
+}
+.red-disabled {
+  background-color: #FF0000;
+}
+

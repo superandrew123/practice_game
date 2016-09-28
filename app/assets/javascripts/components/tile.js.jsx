@@ -64,20 +64,15 @@ var Tile = React.createClass({
   },
   render: function(){
     if(this.props.dead){
-      var tileStyle = {
-        'backgroundColor': this.props.color,
-        'opacity': 0.5
-      }
+      var colorStatus = this.props.color + '-disabled';
     } else {
-      var tileStyle = {
-        'backgroundColor': this.props.color
-      }
+      var colorStatus = this.props.color;
     }
+    var classes = "tile " + colorStatus;
     return (<div 
           id={'tile' + this.props.tileNumber}
-          className="tile" 
+          className={classes}
           color={this.props.color}
-          style={tileStyle} 
           onClick={this.handleClick}
       />);
   }
