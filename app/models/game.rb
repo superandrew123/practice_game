@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  attr_accessor :current_board, :colors_raw, :primary_color
+  attr_accessor :current_board, :colors_raw
   def self.stats(score)
     connection = ActiveRecord::Base.connection
 
@@ -29,7 +29,6 @@ class Game < ActiveRecord::Base
         ) as below  
       FROM games'
     game_stats = connection.execute(game_stats_query)[0]
-    
     total_colors = game_stats['greens'] + game_stats['blues'] + game_stats['yellows'] + game_stats['reds']
     your_color_occurance = game_stats[score['scores'][0][0] + 's'] * 1.0 / total_colors
 
