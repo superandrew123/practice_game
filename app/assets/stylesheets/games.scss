@@ -1,7 +1,7 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$width: 590px;
+$width: 584px;
 
 * {
   box-sizing: border-box;
@@ -14,16 +14,15 @@ body {
   font-family: 'Arial';
 }
 #app-main {
-    width: $width;
-    height: 476px;
-    background-color: #999;
-    border: #666;
-    /* box-shadow: 0 5px 10px 0px #666; */
-    color: white;
-    margin: 20px auto;
-    border-radius: 2px;
-    padding: 0px 5px;
-    position: relative;
+  width: $width;
+  height: 474px;
+  background-color: #999;
+  border: #666;
+  color: white;
+  margin: 20px auto;
+  border-radius: 2px;
+  padding: 0px 5px;
+  position: relative;
   
   button {
     width: 200px;
@@ -40,6 +39,7 @@ body {
   #gameBoard {
     position: absolute;
     top: -6px;
+    left: 2px;
   }
 }
 
@@ -70,14 +70,14 @@ body {
 }
 .tile {
   height: 86px;
-  width: 112px;
+  width: 108px;
   display: inline-block;
-  margin: 2px 2px;
+  margin: 2px 4px;
   box-shadow: 0px 10px 0px 0px #666;
 }
 .green {
   background-color: #00FF00;
-  box-shadow: 0px 10px 0px 0px #666, inset 0px 0px 10px 2px rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 10px 0px 0px #666, inset 0px 0px 10px 2px rgba(255, 255, 255, 0.9);
   // animation: pulse-green 2s linear infinite;
   // animation-delay: 0s;
 }
@@ -87,8 +87,8 @@ body {
   }
 }
 .blue {
-  background-color: #1a48ff;
-  box-shadow: 0px 10px 0px 0px #666;
+  background-color: #007FFF;
+  box-shadow: 0px 10px 0px 0px #666, inset 0px 0px 10px 2px rgba(255, 255, 255, 0.6);
   // animation: pulse-blue 5s linear infinite;
   // animation-delay: 2s;
 }
@@ -101,7 +101,7 @@ body {
   }
 }
 .yellow {
-  background-color: #FFFF00;
+  background-color: #FFFF60;
   box-shadow: 0px 10px 0px 0px #666, inset 0px 0px 10px 3px rgba(255, 255, 255, 0.9);
   // animation: pulse-yellow 2s linear infinite;
   // animation-delay: 1.5s;
@@ -113,7 +113,7 @@ body {
 }
 .red {
   background-color: #FF0000;
-  box-shadow: 0px 10px 0px 0px #666, inset 0px 0px 10px 2px rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 10px 0px 0px #666, inset 0px 0px 10px 2px rgba(255, 255, 255, 0.6);
   // animation: pulse-red 2s linear infinite;
   // animation-delay: 0.5s;
 }
@@ -133,13 +133,13 @@ body {
   animation: none;
 }
 .yellow.disabled {
-  background-color: #e6e600;
-  box-shadow: 0px 10px 0px 0px #e6e600;
+  background-color: #d1d100;
+  box-shadow: 0px 10px 0px 0px #d1d100;
   animation: none;
 }
 .red.disabled {
-  background-color: #cc0000;
-  box-shadow: 0px 10px 0px 0px #cc0000;
+  background-color: darkred;
+  box-shadow: 0px 10px 0px 0px darkred;
   animation: none;
 }
 .tile.disabled {

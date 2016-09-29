@@ -11,9 +11,6 @@ function newGame(){
 
 function createTiles(){
   var tiles = [];
-  var colors = [
-    "red", "blue", "green", "yellow"
-  ];
   var y = 0;
   for(var i = 0; i < 25; i++){
     if(i != 0 && i % 5 == 0){
@@ -32,8 +29,10 @@ function createTiles(){
   return tiles;
 }
 
+var colors = ["red", "blue", "green", "yellow"];
 var tiles = createTiles();
 var gameId = 0;
+
 function display_game_status(status){
   document.getElementById('score').innerHTML = "Score: " + status.points;
   var score_text = status.scores.map(function(score_data){

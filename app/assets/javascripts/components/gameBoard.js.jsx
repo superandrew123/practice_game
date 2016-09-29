@@ -8,7 +8,8 @@ var GameBoard = React.createClass({
       data: {
         game: {
           board: JSON.stringify(tiles),
-          gameId: this.props.gameId
+          gameId: this.props.gameId,
+          colors: colors
         }
       }
     });

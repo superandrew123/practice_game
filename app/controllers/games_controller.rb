@@ -12,6 +12,7 @@ class GamesController < ApplicationController
     id = turn_params[:gameId].to_i
     @game = Game.find(id)
     @game.current_board = JSON.parse(turn_params[:board])
+    @game.colors = turn_params[:colors]
     @conditions = @game.win?
     @score = @game.get_score
     @game.save

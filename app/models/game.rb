@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  attr_accessor :current_board
+  attr_accessor :current_board, :colors
   def win?
     # Check to see if the board is complete 
     won = true
@@ -20,12 +20,15 @@ class Game < ActiveRecord::Base
   def get_score
     # Return a hash with score per color and final score
     results = Hash.new
+    colors.each do |color|
+      results[color] = 0
+    end
+    # binding.pry
     self.current_board.each do |row|
       row.each do |tile|
-        if(results[tile['color']] == nil)
-          results[tile['color']] = 0
+        if(tile['dead'])
+          results[tile['color']] += 1
         end
-        results[tile['color']] += 1
       end
     end
     all_points = results.sort_by {|color, count| - count}
