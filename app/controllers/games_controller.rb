@@ -18,10 +18,10 @@ class GamesController < ApplicationController
     @conditions = @game.win?
     @score = @game.get_score
     @game.primary_color = @score['scores'][0][0]
-    # if(@conditions[:board_locked])
+    if(@conditions[:board_locked])
       @game.score = @score['points']
       @game_stats = Game.stats(@score)
-    # end
+    end
     @game.save
     render :score_board, layout: false
   end
