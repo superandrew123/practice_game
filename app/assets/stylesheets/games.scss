@@ -49,6 +49,14 @@ body {
   background-color: rgba(255, 255, 255, 0.7);
   z-index: 1;
   left: 0;
+  padding: 16.5% 0;
+
+  p {
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    font-style: bold;
+  }
 }
 #score-board {
   width: $width;

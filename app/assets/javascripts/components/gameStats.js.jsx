@@ -1,12 +1,17 @@
 var GameStats = React.createClass({
   render: function(){
-    return (<div id="game-stats">{this.props.message}</div>);
+    return (<div id="game-stats">
+      <p>You scored higher than {this.props.higher} of players.</p>
+      <p>You scored lower than {this.props.lower} of players.</p>
+      <p>{this.props.your_color.capitalize()} was used to score {this.props.your_color_occurance} of the time.</p>
+      <p>Highest score: {this.props.high_score}</p>
+      <p>Average score: {this.props.average}</p>
+    </div>);
   }
 });
 
 
 function create_GameStats(data){
-  debugger;
   var final = document.getElementById('final');
   var message = '';
 
@@ -25,5 +30,13 @@ function create_GameStats(data){
   }
   final.innerHTML = 'Game Over: ' + message;
 
-  ReactDOM.render(<GameStats />, document.getElementById('game-stats-container'));
+  ReactDOM.render(
+    <GameStats
+      higher={data.higher}
+      lower={data.lower}
+      average={data.average}
+      high_score={data.high_score}
+      your_color={data.your_color}
+      your_color_occurance={data.your_color_occurance}
+    />, document.getElementById('game-stats-container'));
 }
