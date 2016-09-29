@@ -1,4 +1,4 @@
-=Untitled Practice Game:
+=Untitled Practice Game
 
 * Game is a practice project in Rails and intro to React
 
@@ -6,3 +6,4 @@
 * Clicking on a square locks the square
 * Tiles around the square clicked will take the value of the next square in that direciton
 * Scoring is done by taking the most common locked tile minus the second most common locked tile
+* Game ends when all squares have been clicked or if all squares are the same color

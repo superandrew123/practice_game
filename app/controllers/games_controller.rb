@@ -7,7 +7,7 @@ class GamesController < ApplicationController
       self.new
     end
   end
-  
+
   def turn
     id = turn_params[:gameId].to_i
     @game = Game.find(id)
@@ -18,7 +18,7 @@ class GamesController < ApplicationController
     @conditions = @game.win?
     @score = @game.get_score
     @game.primary_color = @score['scores'][0][0]
-    if(@conditions[:board_locked])
+    if(@conditions[:win] || @conditions[:board_locked])
       @game.score = @score['points']
       @game_stats = Game.stats(@score)
     end
