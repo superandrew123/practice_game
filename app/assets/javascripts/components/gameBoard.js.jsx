@@ -13,7 +13,8 @@ var GameBoard = React.createClass({
         }
       }
     });
-    return(<div id="gameBoard">
+    return(<div><div id="game-stats-container"></div>
+        <div id="gameBoard">
         {
           tiles.map(function(row, i){
             return row.map(function(tile, e){
@@ -27,7 +28,7 @@ var GameBoard = React.createClass({
             })
           })
         }
-        </div>
+        </div></div>
       );
   }
 });

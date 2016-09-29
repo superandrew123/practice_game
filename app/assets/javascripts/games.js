@@ -31,6 +31,7 @@ function createTiles(){
 
 var colors = ["red", "blue", "green", "yellow"];
 var tiles = createTiles();
+tiles = JSON.parse('[[{"clicks":1,"color":"green","dead":true},{"clicks":1,"color":"blue","dead":true},{"clicks":1,"color":"blue","dead":true},{"clicks":1,"color":"blue","dead":true},{"clicks":1,"color":"green","dead":true}],[{"clicks":1,"color":"red","dead":true},{"clicks":1,"color":"green","dead":true},{"clicks":1,"color":"red","dead":true},{"clicks":1,"color":"green","dead":true},{"clicks":1,"color":"red","dead":true}],[{"clicks":1,"color":"green","dead":true},{"clicks":1,"color":"blue","dead":true},{"clicks":1,"color":"red","dead":true},{"clicks":1,"color":"red","dead":true},{"clicks":1,"color":"blue","dead":true}],[{"clicks":1,"color":"red","dead":true},{"clicks":1,"color":"blue","dead":true},{"clicks":1,"color":"red","dead":true},{"clicks":1,"color":"yellow","dead":true},{"clicks":1,"color":"green","dead":true}],[{"clicks":1,"color":"green","dead":true},{"clicks":1,"color":"blue","dead":true},{"clicks":1,"color":"yellow","dead":true},{"clicks":1,"color":"green","dead":true},{"clicks":1,"color":"green","dead":true}]]');
 var gameId = 0;
 
 function display_game_status(status){
@@ -39,24 +40,4 @@ function display_game_status(status){
     return score_data[0].toUpperCase() + ": " + score_data[1];
   });
   document.getElementById('tile-scores').innerHTML = score_text.join("<br>");
-}
-
-function game_over(status, conditions){
-  var final = document.getElementById('final');
-  var message = '';
-
-  final.style.display = "block";
-  
-  if(status.points > 20){
-    message = 'Amazing!';
-  } else if(status.points > 15){
-    message = 'Great job!';
-  } else if(status.points > 10){
-    message = 'Well done!';
-  } else if(status.points > 7){
-    message = 'Not bad!';
-  } else {
-    message = 'Hmmm, not not bad';
-  }
-  final.innerHTML = 'Game Over: ' + message;
 }
