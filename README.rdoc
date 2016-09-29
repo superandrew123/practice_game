@@ -3,6 +3,6 @@
 * Game is a practice project in Rails and intro to React
 
 ==Game Mechanics:
-* Click on a square locks the square
-* The tiles around the square will take the value of the next square in that direciton
+* Clicking on a square locks the square
+* Tiles around the square clicked will take the value of the next square in that direciton
 * Scoring is done by taking the most common locked tile minus the second most common locked tile
