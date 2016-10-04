@@ -30,7 +30,6 @@ class Game < ActiveRecord::Base
       FROM games'
     game_stats = connection.execute(game_stats_query)[0]
     total_colors = game_stats['greens'].to_i + game_stats['blues'].to_i + game_stats['yellows'].to_i + game_stats['reds'].to_i
-    binding.pry
     your_color_occurance = game_stats[score['scores'][0][0] + 's'].to_i * 1.0 / total_colors
 
     total_games = game_stats['above'].to_i + game_stats['below'].to_i
@@ -38,12 +37,13 @@ class Game < ActiveRecord::Base
     scored_higher_than = game_stats['below'].to_i / (total_games * 1.0)
 
     return {
-      high_score: game_stats['high_score'],
+      high_score: game_stats['high_score'].to_i,
       average: game_stats['average'].to_i,
       higher: self.pretty_percents(scored_higher_than, 1),
       lower: self.pretty_percents(scored_lower_than, 1),
       your_color: score['scores'][0][0],
-      your_color_occurance: self.pretty_percents(your_color_occurance, 1)
+      your_color_occurance: self.pretty_percents(your_color_occurance, 1),
+      points: score["points"]
     }
   end
   def self.pretty_percents(float, decimals)
