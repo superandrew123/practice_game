@@ -12,7 +12,16 @@ gem 'sass-rails', '>= 3.2'
 gem 'uglifier', '>= 1.3.0'
 
 # gem 'therubyracer', platforms: :ruby
-
+# AWS configuration below
+gem 'figaro'
+gem 'puma'
+group :development do
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
+end
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
