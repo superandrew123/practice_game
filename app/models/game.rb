@@ -8,33 +8,34 @@ class Game < ActiveRecord::Base
         avg(score) as average,
         max(score) as high_score,
         (SELECT 
-          count(primary_color) from games where primary_color = "green") as greens,
+          COUNT(primary_color) from games where primary_color = \'green\') as greens,
         (SELECT 
-          count(primary_color) from games where primary_color = "red") as reds,
+          COUNT(primary_color) from games where primary_color = \'red\') as reds,
         (SELECT 
-          count(primary_color) from games where primary_color = "yellow") as yellows,
+          COUNT(primary_color) from games where primary_color = \'yellow\') as yellows,
         (SELECT 
-          count(primary_color) from games where primary_color = "blue") as blues,
+          COUNT(primary_color) from games where primary_color = \'blue\') as blues,
         (SELECT 
-          count(score)
+          COUNT(score)
           from games 
             where score > ' + score["points"].to_s + '
             and score IS NOT NULL
         ) as above,
         (SELECT 
-          count(score)
+          COUNT(score)
           from games 
             where score <= ' + score["points"].to_s + '
             and score IS NOT NULL
         ) as below  
       FROM games'
     game_stats = connection.execute(game_stats_query)[0]
-    total_colors = game_stats['greens'] + game_stats['blues'] + game_stats['yellows'] + game_stats['reds']
-    your_color_occurance = game_stats[score['scores'][0][0] + 's'] * 1.0 / total_colors
+    total_colors = game_stats['greens'].to_i + game_stats['blues'].to_i + game_stats['yellows'].to_i + game_stats['reds'].to_i
+    binding.pry
+    your_color_occurance = game_stats[score['scores'][0][0] + 's'].to_i * 1.0 / total_colors
 
-    total_games = game_stats['above'] + game_stats['below']
-    scored_lower_than = game_stats['above'] / (total_games * 1.0)
-    scored_higher_than = game_stats['below'] / (total_games * 1.0)
+    total_games = game_stats['above'].to_i + game_stats['below'].to_i
+    scored_lower_than = game_stats['above'].to_i / (total_games * 1.0)
+    scored_higher_than = game_stats['below'].to_i / (total_games * 1.0)
 
     return {
       high_score: game_stats['high_score'],
