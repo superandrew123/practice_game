@@ -78,12 +78,12 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   PracticeGame::Application.configure do
-    config.react.variant = :development
+    config.react.variant = :production
   end
-  config.react.jsx_transform_options = {
-    blacklist: ['spec.functionName', 'validation.react', 'strict'], # default options
-    # optional: ["transformerName"],  # pass extra babel options
-    whitelist: ["useStrict"] # even more options
-  }
+  # config.react.jsx_transform_options = {
+  #   blacklist: ['spec.functionName', 'validation.react', 'strict'], # default options
+  #   # optional: ["transformerName"],  # pass extra babel options
+  #   whitelist: ["useStrict"] # even more options
+  # }
 
 end
