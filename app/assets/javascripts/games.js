@@ -8,6 +8,7 @@ function newGame(){
     return response;
   })
 }
+
 Array.prototype.shuffle = function() {
   var j, x, i;
   for (i = this.length; i; i--) {

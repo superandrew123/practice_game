@@ -1,3 +1,7 @@
+
+
+server '54.70.220.249', user: 'deploy', roles: %w{web app db}
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
