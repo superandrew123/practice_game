@@ -267,6 +267,7 @@ body {
 /* --- Landscape global  --- */
 
 @media only screen
+  and (max-width: 736px)
   and (orientation: landscape){
   #app-main {
     height: 100vh;
