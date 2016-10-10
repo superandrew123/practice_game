@@ -152,7 +152,14 @@ body {
   margin-top: 12px;
 }
 
-
+@media screen {
+  #game-stats {
+    padding: 0;
+    p {
+      font-size: 20px;
+    }
+  }
+}
 
 /* ----------- iPhone 5 and 5S ----------- */
 
@@ -186,12 +193,6 @@ body {
   and (min-device-width: 320px) 
   and (max-device-width: 568px)
   and (orientation: landscape) {
-    #game-stats {
-      padding: 0;
-    }
-    #game-stats p {
-      font-size: 20px;
-    }
 }
 
 /* ----------- iPhone 6 ----------- */
