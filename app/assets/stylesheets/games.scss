@@ -203,10 +203,10 @@ body {
   and (max-device-width: 667px) { 
     .tile {
       width: 66px;
-      height: 66px;
+      height: 61px;
     }
     .tile.disabled {
-      height: 56px;
+      height: 46px;
     }
 }
 
@@ -216,7 +216,7 @@ body {
   and (max-device-width: 667px) 
   and (orientation: portrait) { 
     #app-main {
-      height: 56.5vh;
+      height: 55.5vh;
     }
 }
 
@@ -262,6 +262,18 @@ body {
   and (orientation: landscape) { 
     #app-main {
       height: 56.5vh;
+    }
+}
+
+/* --- Portrait global  --- */
+
+@media only screen
+  and (max-width: 736px)
+  and (orientation: portrait){
+    #app-main {
+      #gameBoard {
+        top: -10px;
+      }
     }
 }
 
