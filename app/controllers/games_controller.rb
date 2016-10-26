@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   def new
+    binding.pry
     @game = Game.new
     if(@game.save)
       render "./index.html.erb"

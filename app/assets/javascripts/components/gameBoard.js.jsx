@@ -8,12 +8,14 @@ var GameBoard = React.createClass({
       data: {
         game: {
           board: JSON.stringify(tiles),
-          gameId: this.props.gameId,
+          gameId: gameId,
           colors: JSON.stringify(colors)
         }
       }
     });
-    return(<div><div id="game-stats-container"></div>
+
+    return(<div>
+      <div id="game-stats-container"></div>
         <div id="gameBoard">
         {
           tiles.map(function(row, i){
@@ -28,7 +30,8 @@ var GameBoard = React.createClass({
             })
           })
         }
-        </div></div>
+        </div>
+      </div>
       );
   }
 });

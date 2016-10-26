@@ -27,17 +27,23 @@ body {
   @media (max-width: 650px){
     width: 100%;
   }
+  #instructions {
+    padding: 5%;
+  }
   button {
     width: 200px;
     height: 60px;
     display: block;
     font-size: 20px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto
+    // position: absolute;
+    // top: 0;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
+    margin: auto;
+    background-color: #e7e7e7;
+    border: none;
+
   }
   #gameBoard {
     position: absolute;
@@ -157,6 +163,10 @@ body {
     padding: 0;
     p {
       font-size: 20px;
+      margin: 5px 0;
+    }
+    button {
+      border: 1px solid #666;
     }
   }
 }

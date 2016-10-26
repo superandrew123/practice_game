@@ -1,4 +1,7 @@
 var GameStats = React.createClass({
+  handleClick: function(){
+    location.reload();
+  },
   render: function(){
     return (<div id="game-stats">
       <p>You scored higher than {this.props.higher} of players.</p>
@@ -6,6 +9,7 @@ var GameStats = React.createClass({
       <p>{this.props.your_color.capitalize()} was used to score {this.props.your_color_occurance} of the time.</p>
       <p>Highest score: {this.props.high_score}</p>
       <p>Average score: {this.props.average}</p>
+      <button onClick={this.handleClick}>New Game</button>
     </div>);
   }
 });

@@ -24,7 +24,7 @@ class Game < ActiveRecord::Base
         (SELECT 
           COUNT(score)
           from games 
-            where score <= ' + score["points"].to_s + '
+            where score < ' + score["points"].to_s + '
             and score IS NOT NULL
         ) as below  
       FROM games'
