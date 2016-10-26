@@ -1,5 +1,10 @@
 
 var Tile = React.createClass({
+  getInitialState: function() {
+    return {
+      sounds: ['ting.mp3','zing.mp3','oing.mp3','bing.mp3']
+    }
+  },
   changeColor: function (row, col){
     // top
     if(tiles[row - 1] !== undefined && !tiles[row - 1][col].dead){
@@ -52,6 +57,10 @@ var Tile = React.createClass({
     var tileValues = this.props.tileNumber.split('-');
     var row = parseInt(tileValues[0]);
     var col = parseInt(tileValues[1]);
+    var audio = new Audio('/assets/sounds/' + this.state.sounds[parseInt(Math.random() * this.state.sounds.length)]);
+    audio.volume = 0.15;
+    audio.play();
+
     tiles[row][col].clicks += 1;
 
     if(!tiles[row][col].dead){

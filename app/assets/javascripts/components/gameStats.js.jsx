@@ -3,6 +3,7 @@ var GameStats = React.createClass({
     location.reload();
   },
   render: function(){
+    new Audio('/assets/sounds/yay.mp3').play();
     return (<div id="game-stats">
       <p>You scored higher than {this.props.higher} of players.</p>
       <p>You scored lower than {this.props.lower} of players.</p>
