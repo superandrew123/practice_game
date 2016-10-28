@@ -49,8 +49,8 @@ set :puma_preload_app, false
 
 # Default value for linked_dirs is []
 # append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
-append :linked_dirs, 'public/assets/sounds/*'
-
+append :linked_dirs, 'public/assets/sounds/'
+append :linked_files, 'public/assets/sounds/*'
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
