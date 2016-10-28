@@ -7,7 +7,7 @@ set :branch, :master
 set :deploy_to, '/home/deploy/practice-game'
 set :pty, true
 set :linked_files, %w{config/database.yml config/application.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads public/assets/sounds}
 set :keep_releases, 5
 set :rvm_type, :user
 
@@ -49,8 +49,7 @@ set :puma_preload_app, false
 
 # Default value for linked_dirs is []
 # append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
-append :linked_dirs, 'public/assets/sounds/'
-append :linked_files, 'public/assets/sounds/*'
+
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
