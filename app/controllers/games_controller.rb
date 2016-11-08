@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   def new
     @game = Game.new
     if(@game.save)
+      session[:game_id] = @game.id
       render "./index.html.erb"
     else 
       self.new
@@ -9,8 +10,7 @@ class GamesController < ApplicationController
   end
 
   def turn
-    id = turn_params[:gameId].to_i
-    @game = Game.find(id)
+    @game = Game.find(session[:game_id])
     @game.current_board = JSON.parse(turn_params[:board])
     @game.board = turn_params[:board]
     @game.colors_raw = JSON.parse(turn_params[:colors])

@@ -2,13 +2,11 @@ var GameBoard = React.createClass({
 
   render: function(){
     // 5x5 board to start
-    gameId = this.props.gameId;
     $.ajax('/turn', {
       method: 'POST',
       data: {
         game: {
           board: JSON.stringify(tiles),
-          gameId: gameId,
           colors: JSON.stringify(colors)
         }
       }
@@ -25,7 +23,6 @@ var GameBoard = React.createClass({
                 dead={tile.dead} 
                 key={i + "-" + e} 
                 tileNumber={i + "-" + e}
-                gameId={gameId}
               />;
             })
           })

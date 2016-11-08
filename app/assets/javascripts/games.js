@@ -61,7 +61,6 @@ var tiles = createTiles();
 
 // Comment in/out the following line for testing
 // tiles = JSON.parse('[[{"clicks":1,"color":"green","dead":true},{"clicks":1,"color":"blue","dead":true},{"clicks":1,"color":"blue","dead":true},{"clicks":1,"color":"blue","dead":true},{"clicks":1,"color":"green","dead":true}],[{"clicks":1,"color":"red","dead":true},{"clicks":1,"color":"green","dead":true},{"clicks":1,"color":"red","dead":true},{"clicks":1,"color":"green","dead":true},{"clicks":1,"color":"red","dead":true}],[{"clicks":1,"color":"green","dead":true},{"clicks":1,"color":"blue","dead":true},{"clicks":1,"color":"red","dead":true},{"clicks":1,"color":"red","dead":true},{"clicks":1,"color":"blue","dead":true}],[{"clicks":1,"color":"red","dead":true},{"clicks":1,"color":"blue","dead":true},{"clicks":1,"color":"red","dead":true},{"clicks":1,"color":"yellow","dead":true},{"clicks":1,"color":"green","dead":true}],[{"clicks":1,"color":"green","dead":true},{"clicks":1,"color":"blue","dead":true},{"clicks":1,"color":"yellow","dead":true},{"clicks":1,"color":"green","dead":true},{"clicks":1,"color":"green","dead":true}]]');
-var gameId = 0;
 
 function display_game_status(status){
   document.getElementById('score').innerHTML = "Score: " + status.points;

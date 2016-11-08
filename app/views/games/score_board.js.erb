@@ -1,8 +1,8 @@
-if(window.innerWidth <= 736){
-  document.getElementById('score-board').style.display = "inline-block";  
-} else {
+// if(window.innerWidth <= 736){
+//   document.getElementById('score-board').style.display = "inline-block";  
+// } else {
   document.getElementById('score-board').style.display = "block";  
-}
+// }
 
 display_game_status(<%= @score.to_json.html_safe %>);
 
