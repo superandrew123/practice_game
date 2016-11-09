@@ -1,5 +1,8 @@
 class Game < ActiveRecord::Base
+  belongs_to :user
+  
   attr_accessor :current_board, :colors_raw
+
   def self.stats(score)
     connection = ActiveRecord::Base.connection
 
