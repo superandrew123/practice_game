@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   has_many :games, dependent: :destroy
   after_create :generate_url
 
+  def delete_unfinished_games
+    self.games.where(status: nil).delete_all
+  end
+  
   private 
     def generate_url
       date_time = DateTime.new.to_s

@@ -25,6 +25,8 @@ class GamesController < ApplicationController
     @game.score = @score['points']
     @game.save
     if(@conditions[:win] || @conditions[:board_locked])
+      @game.status = 'complete'
+      @game.save
       @game_stats = Game.stats(@score)
     end
     render :score_board, layout: false

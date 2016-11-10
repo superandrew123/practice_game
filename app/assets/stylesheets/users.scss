@@ -1,3 +1,61 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$green: #00FF00;
+$blue: #007FFF;
+$red: #FF0000;
+$yellow: #FFFF60;
+
+h1 {
+  color: white;
+  text-align: center;
+}
+.mini-tile {
+  border: 1px solid black;
+  display: inline-block;
+  height: 30px;
+  width: 39px;
+}
+.mini-tile-green {
+  background-color: $green;
+}
+.mini-tile-blue {
+  background-color: $blue;
+}
+.mini-tile-red {
+  background-color: $red;
+}
+.mini-tile-yellow {
+  background-color: $yellow;
+}
+table, tr, td {
+  display: block;
+}
+div#dashboard {
+  background-color: #e7e7e7;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 5px 10px;
+
+  p {
+    margin: 0 0 5px;
+  }
+  .game-data {
+    position: relative;
+    margin-bottom: 5px;
+
+    .mini-board {
+      width: 200px;
+      height: 150px;
+      background-color: white;
+    }
+    .game-numbers {
+      width: 50%;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
