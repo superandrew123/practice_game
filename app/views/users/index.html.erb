@@ -1,0 +1,4 @@
+<h1>My Games</h1>
+<% @user.games.each do |game| %>
+  <div class="prev-game"><%= game.score %></div>
+<% end %>

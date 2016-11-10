@@ -1,6 +1,5 @@
 class GamesController < ApplicationController
   def new
-    session[:user_id] = false
     if !session[:user_id]
       @user = User.create
       session[:user_id] = @user.id
