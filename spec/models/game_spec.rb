@@ -13,6 +13,6 @@ describe Game, type: :model do
     games = Game.all.length
     @game.user_id = @user.id
     @game.save
-    expect(Game.all.length).to eq(games + 1)
+    expect(Game.all.length).to be > games
   end
 end

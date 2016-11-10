@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :games
   # devise_for :users
   root 'games#new'
-  post 'turn' => 'games#turn'
 
+  post 'turn' => 'games#turn'
+  get ':url' => 'users#index', as: :user
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
