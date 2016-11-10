@@ -1,12 +1,16 @@
 class GamesController < ApplicationController
   def new
-    @game = Game.new
-    if(@game.save)
-      session[:game_id] = @game.id
-      render "./index.html.erb"
+    if !session[:user_id]
+      @user = User.create
+      session[:user_id] = @user.id
     else 
-      self.new
+      @user = User.find(session[:user_id])
     end
+    @game = Game.new
+    @game.user_id = @user.id
+    @game.save
+    session[:game_id] = @game.id
+    render "./index.html.erb"
   end
 
   def turn

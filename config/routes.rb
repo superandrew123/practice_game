@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   resources :games
-  devise_for :users
+  # devise_for :users
   root 'games#new'
   post 'turn' => 'games#turn'
 

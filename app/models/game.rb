@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
   belongs_to :user
-  
+  validates :user_id, :presence => true
   attr_accessor :current_board, :colors_raw
 
   def self.stats(score)
