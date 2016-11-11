@@ -4,7 +4,10 @@ class GamesController < ApplicationController
       @user = User.create
       session[:user_id] = @user.id
     else 
-      @user = User.find(session[:user_id])
+      @user = User.find_by_id(session[:user_id])
+      if @user == nil
+        @user= User.create
+      end
     end
     @game = Game.new
     @game.user_id = @user.id
