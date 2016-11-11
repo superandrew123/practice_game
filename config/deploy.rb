@@ -45,7 +45,7 @@ set :puma_preload_app, false
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, 'public/assets/sounds/bing.mp3', 'public/assets/sounds/oing.mp3', 'public/assets/sounds/ting.mp3', 'public/assets/sounds/zing.mp3', 'public/assets/sounds/yay.mp3'
+# append :linked_files, 'config/database.yml', 'config/secrets.yml'
 
 # Default value for linked_dirs is []
 # append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
