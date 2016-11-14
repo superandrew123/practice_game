@@ -9,6 +9,24 @@ class User < ActiveRecord::Base
     self.games.where(status: nil).delete_all
   end
   
+  def global_stats
+    stats = Hash.new
+    stats[:total_games] = self.total_games
+    stats[:games_per_color] = self.games_per_color
+    stats
+  end
+
+  def total_games
+    self.games.length
+  end
+  def games_per_color
+    colors = self.games.pluck(:primary_color).uniq
+    totals = Hash.new
+    colors.each do |color| 
+      totals[color] = self.games.where(primary_color: color).count
+    end
+    totals
+  end
   private 
     def generate_url
       date_time = DateTime.new.to_s
