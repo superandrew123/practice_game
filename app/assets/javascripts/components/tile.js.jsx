@@ -57,7 +57,7 @@ var Tile = React.createClass({
     var tileValues = this.props.tileNumber.split('-');
     var row = parseInt(tileValues[0]);
     var col = parseInt(tileValues[1]);
-    var audio = new Audio('/assets/sounds/' + this.state.sounds[parseInt(Math.random() * this.state.sounds.length)]);
+    var audio = new Audio('/sounds/' + this.state.sounds[parseInt(Math.random() * this.state.sounds.length)]);
     audio.volume = 0.15;
     audio.play();
 
