@@ -17,11 +17,16 @@ describe User, type: :model do
       expect(games_per_color['blue']).to eq(2)
       expect(games_per_color['red']).to eq(nil)
     end
+    it '#median_score returns the average score' do 
+      expect(@user.median_score).to eq(11.66)
+    end
     it '#global_stats returns hash with the approriate keys' do 
       expect(@user.global_stats).to have_key(:total_games)
       expect(@user.global_stats).to have_key(:games_per_color)
+      expect(@user.global_stats).to have_key(:median_score)
     end
   end
+  
   private
     def create_user_and_game
       @user = User.create

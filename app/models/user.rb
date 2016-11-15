@@ -13,12 +13,14 @@ class User < ActiveRecord::Base
     stats = Hash.new
     stats[:total_games] = self.total_games
     stats[:games_per_color] = self.games_per_color
+    stats[:median_score] = self.median_score
     stats
   end
 
   def total_games
     self.games.length
   end
+
   def games_per_color
     colors = self.games.pluck(:primary_color).uniq
     totals = Hash.new
@@ -27,6 +29,11 @@ class User < ActiveRecord::Base
     end
     totals
   end
+
+  def median_score
+    (Game.where(user_id: self.id).average(:score) * 100).to_i / 100.0
+  end
+
   private 
     def generate_url
       date_time = DateTime.new.to_s
