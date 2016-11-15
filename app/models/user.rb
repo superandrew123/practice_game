@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
     stats = Hash.new
     stats[:total_games] = self.total_games
     stats[:games_per_color] = self.games_per_color
-    stats[:median_score] = self.median_score
+    stats[:mean_score] = self.mean_score
+    stats[:modal_score] = self.modal_score
     stats
   end
 
@@ -30,8 +31,23 @@ class User < ActiveRecord::Base
     totals
   end
 
-  def median_score
+  def mean_score
     (Game.where(user_id: self.id).average(:score) * 100).to_i / 100.0
+  end
+
+  def modal_score
+    scores = Game.where(user_id: self.id).order(:score).pluck(:score)
+    mode_values = scores.inject(Hash.new(0)) { |score_keys, score|
+      score_keys[score] += 1
+      score_keys
+    }
+    mode = [false, 1]
+    mode_values.each { |k, v|
+      if v > mode[1]
+        mode = [k, v]
+      end
+    }
+    return mode[0] ? mode[0] : 'No Modal Score'
   end
 
   private 

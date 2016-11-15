@@ -2,7 +2,10 @@ require 'rails_helper'
 
 describe User, type: :model do 
   before :example do 
-    create_user_and_game
+    @user = User.create
+    create_game 'yellow', 5, @user.id
+    create_game 'blue', 14, @user.id
+    create_game 'blue', 15, @user.id
   end
   it '#generate_url runs and saves a url for a User' do 
     expect(@user.url.class).to eq(String)
@@ -17,42 +20,34 @@ describe User, type: :model do
       expect(games_per_color['blue']).to eq(2)
       expect(games_per_color['red']).to eq(nil)
     end
-    it '#median_score returns the average score' do 
-      expect(@user.median_score).to eq(11.66)
+    it '#mean_score returns the average score' do 
+      expect(@user.mean_score).to eq(11.33)
+    end
+    it '#modal_score returns the mode if there is a modal score' do 
+      create_game 'blue', 5, @user.id
+      expect(@user.modal_score).to eq(5)
+    end
+    it '#modal_score returns "No Modal Score" if there is no mode' do 
+      expect(@user.modal_score).to eq('No Modal Score')
     end
     it '#global_stats returns hash with the approriate keys' do 
       expect(@user.global_stats).to have_key(:total_games)
       expect(@user.global_stats).to have_key(:games_per_color)
-      expect(@user.global_stats).to have_key(:median_score)
+      expect(@user.global_stats).to have_key(:mean_score)
+      expect(@user.global_stats).to have_key(:modal_score)
     end
   end
-  
+
   private
-    def create_user_and_game
-      @user = User.create
-      @game = Game.new
-      @game.status = 'complete'
-      @game.board = "[[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"green\",\"dead\":true},{\"clicks\":1,\"color\":\"green\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true}],[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"green\",\"dead\":true}],[{\"clicks\":1,\"color\":\"blue\",\"dead\":true},{\"clicks\":2,\"color\":\"green\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"blue\",\"dead\":true},{\"clicks\":1,\"color\":\"blue\",\"dead\":true}],[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"blue\",\"dead\":true}],[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true}]]"
-      @game.colors = "[\"red\",\"blue\",\"green\",\"yellow\"]"
-      @game.score = 5
-      @game.primary_color = 'yellow'
-      @game.user_id = @user.id
-      @game.save
-      @game2 = Game.new
-      @game2.status = 'complete'
-      @game2.board = "[[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"green\",\"dead\":true},{\"clicks\":1,\"color\":\"green\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true}],[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"green\",\"dead\":true}],[{\"clicks\":1,\"color\":\"blue\",\"dead\":true},{\"clicks\":2,\"color\":\"green\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"blue\",\"dead\":true},{\"clicks\":1,\"color\":\"blue\",\"dead\":true}],[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"blue\",\"dead\":true}],[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true}]]"
-      @game2.colors = "[\"red\",\"blue\",\"green\",\"yellow\"]"
-      @game2.score = 15
-      @game2.primary_color = 'blue'
-      @game2.user_id = @user.id
-      @game2.save
-      @game3 = Game.new
-      @game3.status = 'complete'
-      @game3.board = "[[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"green\",\"dead\":true},{\"clicks\":1,\"color\":\"green\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true}],[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"green\",\"dead\":true}],[{\"clicks\":1,\"color\":\"blue\",\"dead\":true},{\"clicks\":2,\"color\":\"green\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"blue\",\"dead\":true},{\"clicks\":1,\"color\":\"blue\",\"dead\":true}],[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"blue\",\"dead\":true}],[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true}]]"
-      @game3.colors = "[\"red\",\"blue\",\"green\",\"yellow\"]"
-      @game3.score = 15
-      @game3.primary_color = 'blue'
-      @game3.user_id = @user.id
-      @game3.save
+    def create_game(primary_color, score, user_id)
+      board = "[[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"green\",\"dead\":true},{\"clicks\":1,\"color\":\"green\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true}],[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"green\",\"dead\":true}],[{\"clicks\":1,\"color\":\"blue\",\"dead\":true},{\"clicks\":2,\"color\":\"green\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"blue\",\"dead\":true},{\"clicks\":1,\"color\":\"blue\",\"dead\":true}],[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"blue\",\"dead\":true}],[{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true},{\"clicks\":1,\"color\":\"red\",\"dead\":true},{\"clicks\":1,\"color\":\"yellow\",\"dead\":true}]]"
+      game = Game.new
+      game.status = 'complete'
+      game.board = board
+      game.colors = "[\"red\",\"blue\",\"green\",\"yellow\"]"
+      game.score = score
+      game.primary_color = primary_color
+      game.user_id = user_id
+      game.save
     end
 end
