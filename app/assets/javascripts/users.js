@@ -5,6 +5,9 @@ function getUserStats(){
   $.ajax({
     method: 'GET',
     url: window.location.href + '/stats',
-    type: 'json'
+    type: 'json',
+    complete: function(data){
+      build_UserStats(data.responseJSON);
+    }
   });
 }
