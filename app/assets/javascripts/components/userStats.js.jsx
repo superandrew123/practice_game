@@ -6,7 +6,6 @@ var UserStats = React.createClass({
 });
 
 function build_UserStats(data){
-  debugger;
   ReactDOM.render(
     <UserStats 
       total_games={data.total_games}
