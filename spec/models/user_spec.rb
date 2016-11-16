@@ -10,7 +10,7 @@ describe User, type: :model do
   it '#generate_url runs and saves a url for a User' do 
     expect(@user.url.class).to eq(String)
   end
-  context "#global_stats" do
+  context "#stats" do
     it '#total_games returns total games a user has played' do
       expect(@user.total_games).to eq(3)
     end

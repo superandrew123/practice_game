@@ -17,6 +17,17 @@ describe('fn createTiles to create 25 tiles with random colors', () =>  {
   });
 });
 
+describe('User stats', () => {
+  const stats = getUserStats();
+
+  it('stats should have all the required keys', () => {
+    expect(stats.total_games).toBeDefined();
+    expect(stats.games_per_color).toBeDefined();
+    expect(stats.mean_score).toBeDefined();
+    expect(stats.modal_score).toBeDefined();
+  });
+});
+
 describe('String#capitalize', () => {
   it('should capitalize a single word', () => {
     expect('cat'.capitalize()).toBe('Cat');

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'games#new'
 
   post 'turn' => 'games#turn'
+  get ':url/stats' => 'users#stats', as: :user_stats
   get ':url' => 'users#index', as: :user
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

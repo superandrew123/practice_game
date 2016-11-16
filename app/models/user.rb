@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     self.games.where(status: nil).delete_all
   end
   
-  def global_stats
+  def stats
     stats = Hash.new
     stats[:total_games] = self.total_games
     stats[:games_per_color] = self.games_per_color
@@ -52,7 +52,6 @@ class User < ActiveRecord::Base
 
   private 
     def generate_url
-      date_time = DateTime.new.to_s
       self.url = Base64.urlsafe_encode64(rand(1000..9999).to_s + 'x' + self.id.to_s)
       self.save
     end
