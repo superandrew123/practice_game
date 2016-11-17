@@ -1,7 +1,9 @@
 var UserStats = React.createClass({
   render: function(){
     debugger;
-    return '';
+    return (<div id="user-stats">
+      test
+    </div>);
   }
 });
 

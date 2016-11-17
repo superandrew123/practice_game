@@ -2,4 +2,4 @@
 <div id="user-data-body">
   <%= react_component('UserDashboard', {created: @date, games: @user.games}) %>
 </div>
-<p id="user-stats-link" class="bottom-link">My Stats</p>
+<p id="user-stats-link" class="bottom-link" onclick="getUserStats()">My Stats</p>
