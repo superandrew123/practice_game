@@ -31,7 +31,7 @@ h1 {
 table, tr, td {
   display: block;
 }
-div#dashboard {
+#user-data-body {
   background-color: #e7e7e7;
   max-width: 600px;
   margin: 0 auto;
@@ -59,8 +59,9 @@ div#dashboard {
     }
   }
 }
-#user-stats-link {
-  cursor: pointer;
+#bottom-links {
+  max-width: 600px;
+  margin: 0 auto 10px;
 }
 #user-stats {
   background-color: #e7e7e7;

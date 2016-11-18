@@ -1,5 +1,12 @@
 <h1>My Games</h1>
+<div id="bottom-links"><!--
+  --><a class="bottom-link" onclick="getUserStats()">My Stats</a><!--
+  --><a class="bottom-link" href="/<%= @user.url %>">My Games</a><!--
+  --><a class="bottom-link" href="/">New Game</a><!--
+--></div>
 <div id="user-data-body">
-  <%= react_component('UserDashboard', {created: @date, games: @user.games}) %>
+  <%= react_component(
+    'UserDashboard', 
+    {created: @date, games: Game.all.where(user_id: @user.id).order(id: :desc)
+  }) %>
 </div>
-<p id="user-stats-link" class="bottom-link" onclick="getUserStats()">My Stats</p>

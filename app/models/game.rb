@@ -32,7 +32,6 @@ class Game < ActiveRecord::Base
         ) as below  
       FROM games'
     game_stats = connection.execute(game_stats_query)[0]
-    binding.pry
     total_colors = game_stats['greens'].to_i + game_stats['blues'].to_i + game_stats['yellows'].to_i + game_stats['reds'].to_i
     your_color_occurance = game_stats[score['scores'][0][0] + 's'].to_i * 1.0 / total_colors
 
@@ -76,7 +75,6 @@ class Game < ActiveRecord::Base
     self.colors_raw.each do |color|
       results[color] = 0
     end
-    # binding.pry
     self.current_board.each do |row|
       row.each do |tile|
         if(tile['dead'])

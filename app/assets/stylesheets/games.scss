@@ -167,8 +167,18 @@ body {
   color: white;
   text-decoration: none;
   text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  width: 33%;
+  margin-top: 10px;
+}
+.bottom-link.block {
+  width: 100%;
+}
+.block {
   display: block;
 }
+
 @media screen {
   #game-stats {
     padding: 0;

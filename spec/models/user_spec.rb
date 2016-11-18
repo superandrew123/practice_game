@@ -30,11 +30,11 @@ describe User, type: :model do
     it '#modal_score returns "No Modal Score" if there is no mode' do 
       expect(@user.modal_score).to eq('No Modal Score')
     end
-    it '#global_stats returns hash with the approriate keys' do 
-      expect(@user.global_stats).to have_key(:total_games)
-      expect(@user.global_stats).to have_key(:games_per_color)
-      expect(@user.global_stats).to have_key(:mean_score)
-      expect(@user.global_stats).to have_key(:modal_score)
+    it '#stats returns hash with the approriate keys' do 
+      expect(@user.stats).to have_key(:total_games)
+      expect(@user.stats).to have_key(:games_per_color)
+      expect(@user.stats).to have_key(:mean_score)
+      expect(@user.stats).to have_key(:modal_score)
     end
   end
 

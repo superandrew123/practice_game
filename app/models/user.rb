@@ -24,11 +24,12 @@ class User < ActiveRecord::Base
 
   def games_per_color
     colors = self.games.pluck(:primary_color).uniq
-    totals = Hash.new
-    colors.each do |color| 
-      totals[color] = self.games.where(primary_color: color).count
+    colors.collect do |color| 
+      {
+        color: color,
+        count: self.games.where(primary_color: color).count
+      }
     end
-    totals
   end
 
   def mean_score

@@ -1,8 +1,17 @@
 var UserStats = React.createClass({
   render: function(){
-    debugger;
     return (<div id="user-stats">
-      test
+      <p>Total Games Played: <span>{this.props.total_games}</span></p>
+      <div>
+        <p>Games Played Per Color:</p>
+        {
+          this.props.games_per_color.map(function(games,i){
+            return <p className="games-per-color" key={i}>{games.color.capitalize()}: {games.count}</p>;
+          })
+        }
+      </div>
+      <p>Average Score: <span>{this.props.mean_score}</span></p>
+      <p>Mode of Scores: <span>{this.props.modal_score}</span></p>
     </div>);
   }
 });
